@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-console-bg text-slate-200 font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply bg-console-panel border border-console-border rounded-lg;
+  }
+  .btn-primary {
+    @apply bg-signal-amber text-console-bg font-display font-semibold px-4 py-2 rounded-md
+           hover:bg-signal-amberDim transition-colors disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-transparent border border-console-border text-slate-300 font-display font-medium px-4 py-2 rounded-md
+           hover:border-signal-amber hover:text-signal-amber transition-colors;
+  }
+  .input-field {
+    @apply bg-console-bg border border-console-border rounded-md px-3 py-2 text-sm text-slate-200
+           focus:outline-none focus:border-signal-amber transition-colors w-full;
+  }
+  .label-text {
+    @apply text-xs uppercase tracking-wider text-console-muted font-mono mb-1 block;
+  }
+  .status-pill {
+    @apply px-2.5 py-1 rounded text-xs font-mono font-medium inline-block;
+  }
+}
