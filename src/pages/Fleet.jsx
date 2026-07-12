@@ -17,14 +17,18 @@ export default function Fleet() {
   const handleAdd = async (e) => {
     e.preventDefault();
     setError("");
-    // Rule: registration number must be unique
-    const dupe = vehicles.some((v) => v.regNo.toLowerCase() === form.regNo.toLowerCase());
+
+    const normalizedRegNo = form.regNo.trim().toLowerCase();
+    const dupe = (vehicles || []).some((v) => (v.regNo || "").trim().toLowerCase() === normalizedRegNo);
+
     if (dupe) {
-      setError(`Registration number "${form.regNo}" already exists.`);
+      setError("Registration number already exists. Please use a unique registration number.");
       return;
     }
+
     await addDoc(collection(db, "vehicles"), {
       ...form,
+      regNo: form.regNo.trim(),
       capacity: Number(form.capacity),
       odometer: Number(form.odometer),
       acquisitionCost: Number(form.acquisitionCost),
@@ -61,7 +65,10 @@ export default function Fleet() {
           <div>
             <label className="label-text">Reg. No. (unique)</label>
             <input required className="input-field" value={form.regNo}
-              onChange={(e) => setForm({ ...form, regNo: e.target.value })} />
+              onChange={(e) => {
+                setError("");
+                setForm({ ...form, regNo: e.target.value });
+              }} />
           </div>
           <div>
             <label className="label-text">Name / Model</label>
