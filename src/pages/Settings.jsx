@@ -41,7 +41,7 @@ export default function Settings() {
             <tbody>
               {Object.entries(ROLE_ACCESS).map(([role, access]) => (
                 <tr key={role} className="border-b border-console-border/50 last:border-0">
-                  <td className="py-2">{role}</td>
+                  <td className="py-2">{role === "Dispatcher" ? "Driver" : role}</td>
                   {["fleet", "drivers", "trips", "fuel", "analytics"].map((mod) => (
                     <td key={mod} className="py-2 font-mono text-xs">
                       {access[mod] === "edit" ? "✓" : access[mod] === "view" ? "view" : "—"}
