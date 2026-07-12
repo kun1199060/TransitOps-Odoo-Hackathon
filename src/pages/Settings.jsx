@@ -2,7 +2,7 @@ import { ROLE_ACCESS } from "../context/AuthContext";
 
 export default function Settings() {
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8">
       <h1 className="text-2xl font-display font-bold text-white mb-1">Settings & RBAC</h1>
       <p className="text-sm text-console-muted mb-6">General configuration and role-based access matrix</p>
 
@@ -26,7 +26,8 @@ export default function Settings() {
 
         <div className="panel p-5">
           <h2 className="font-display font-semibold text-white mb-4">Role-Based Access (RBAC)</h2>
-          <table className="w-full text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[620px] text-sm">
             <thead>
               <tr className="text-left text-[11px] font-mono text-console-muted uppercase border-b border-console-border">
                 <th className="pb-2">Role</th>
@@ -50,6 +51,7 @@ export default function Settings() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </div>

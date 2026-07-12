@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Menu } from "lucide-react";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import Sidebar from "./components/Sidebar";
 import Login from "./pages/Login";
@@ -13,6 +15,7 @@ import Settings from "./pages/Settings";
 
 function ProtectedLayout({ children }) {
   const { user, loading } = useAuth();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   if (loading) {
     return (
@@ -25,9 +28,23 @@ function ProtectedLayout({ children }) {
   if (!user) return <Navigate to="/login" replace />;
 
   return (
-    <div className="flex">
-      <Sidebar />
-      <main className="flex-1 min-h-screen overflow-y-auto">{children}</main>
+    <div className="min-h-screen bg-console-bg">
+      <button
+        type="button"
+        onClick={() => setSidebarOpen(true)}
+        className="fixed left-4 top-4 z-50 md:hidden inline-flex items-center gap-2 rounded-md border border-console-border bg-console-panel px-3 py-2 text-sm text-slate-200"
+      >
+        <Menu className="w-4 h-4" />
+        Menu
+      </button>
+
+      <div className="flex min-h-screen">
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <main className="flex-1 min-w-0 min-h-screen overflow-y-auto">
+          <div className="h-14 md:hidden" />
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

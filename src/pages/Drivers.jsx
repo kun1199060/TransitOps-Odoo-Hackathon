@@ -31,8 +31,8 @@ export default function Drivers() {
   const isExpired = (date) => date && new Date(date) < new Date();
 
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-6">
+    <div className="p-4 md:p-8">
+      <div className="flex flex-col gap-3 mb-6 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-2xl font-display font-bold text-white">Drivers & Safety Profiles</h1>
           <p className="text-sm text-console-muted">Manage driver roster and compliance</p>
@@ -44,7 +44,7 @@ export default function Drivers() {
       </div>
 
       {showForm && (
-        <form onSubmit={handleAdd} className="panel p-5 mb-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <form onSubmit={handleAdd} className="panel p-5 mb-6 grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
             <label className="label-text">Name</label>
             <input required className="input-field" value={form.name}
@@ -91,7 +91,7 @@ export default function Drivers() {
       )}
 
       <div className="panel overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full min-w-[720px] text-sm">
           <thead>
             <tr className="text-left text-[11px] font-mono text-console-muted uppercase border-b border-console-border">
               <th className="p-4">Driver</th>

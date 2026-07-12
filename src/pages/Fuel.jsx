@@ -35,8 +35,8 @@ export default function Fuel() {
   );
 
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-6">
+    <div className="p-4 md:p-8">
+      <div className="flex flex-col gap-3 mb-6 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-2xl font-display font-bold text-white">Fuel & Expense Management</h1>
           <p className="text-sm text-console-muted">Track consumption and operational cost</p>
@@ -47,7 +47,7 @@ export default function Fuel() {
       </div>
 
       {showFuelForm && (
-        <form onSubmit={handleLogFuel} className="panel p-5 mb-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <form onSubmit={handleLogFuel} className="panel p-5 mb-6 grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
             <label className="label-text">Vehicle</label>
             <select required className="input-field" value={fuelForm.vehicleId}
@@ -79,7 +79,8 @@ export default function Fuel() {
 
       <div className="panel p-5 mb-6">
         <h2 className="font-display font-semibold text-white mb-4">Fuel Logs</h2>
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[560px] text-sm">
           <thead>
             <tr className="text-left text-[11px] font-mono text-console-muted uppercase border-b border-console-border">
               <th className="pb-2">Vehicle</th>
@@ -99,6 +100,7 @@ export default function Fuel() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
 
       <div className="panel p-5">

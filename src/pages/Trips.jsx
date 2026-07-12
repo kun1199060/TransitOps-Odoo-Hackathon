@@ -75,7 +75,7 @@ export default function Trips() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8">
       <h1 className="text-2xl font-display font-bold text-white mb-1">Trip Dispatcher</h1>
       <p className="text-sm text-console-muted mb-6">Draft → Dispatched → Completed / Cancelled</p>
 

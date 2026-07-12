@@ -48,8 +48,8 @@ export default function Fleet() {
   };
 
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-6">
+    <div className="p-4 md:p-8">
+      <div className="flex flex-col gap-3 mb-6 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-2xl font-display font-bold text-white">Vehicle Registry</h1>
           <p className="text-sm text-console-muted">Master list of fleet vehicles</p>
@@ -61,7 +61,7 @@ export default function Fleet() {
       </div>
 
       {showForm && (
-        <form onSubmit={handleAdd} className="panel p-5 mb-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <form onSubmit={handleAdd} className="panel p-5 mb-6 grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
             <label className="label-text">Reg. No. (unique)</label>
             <input required className="input-field" value={form.regNo}
@@ -114,7 +114,7 @@ export default function Fleet() {
       )}
 
       <div className="panel overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full min-w-[760px] text-sm">
           <thead>
             <tr className="text-left text-[11px] font-mono text-console-muted uppercase border-b border-console-border">
               <th className="p-4">Reg. No.</th>

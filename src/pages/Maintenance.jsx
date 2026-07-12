@@ -39,7 +39,7 @@ export default function Maintenance() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8">
       <h1 className="text-2xl font-display font-bold text-white mb-1">Maintenance</h1>
       <p className="text-sm text-console-muted mb-6">Log service records and manage repair status</p>
 
@@ -74,7 +74,8 @@ export default function Maintenance() {
 
         <div className="panel p-5">
           <h2 className="font-display font-semibold text-white mb-4">Service Log</h2>
-          <table className="w-full text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px] text-sm">
             <thead>
               <tr className="text-left text-[11px] font-mono text-console-muted uppercase border-b border-console-border">
                 <th className="pb-2">Vehicle</th>
@@ -102,6 +103,7 @@ export default function Maintenance() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
       <p className="text-xs text-console-muted mt-3 font-mono">
